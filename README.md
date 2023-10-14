@@ -56,6 +56,9 @@ Os dados serão persistidos no servidor, em um objeto existente dentro do arquiv
 ```
 ## Endpoints
 
+![Screenshot 2023-10-13 213554](https://github.com/DaviBispo16/crud-sistema-bancario/assets/136941700/2a945998-8a80-4b43-a12c-cbc5744640c8)
+
+
 ### Listar contas bancárias
 
 #### `GET` `/contas?senha_banco=Cubos123Bank`
