@@ -1,24 +1,14 @@
-![](https://i.imgur.com/xG74tOh.png)
+# Crud Sistema Bancário
 
-# Desafio Módulo 2 - Back-end
 
-## Como entregar?
+## :man_mechanic: Linguagens e Ferramentas
+ <div>
+ <img align="center height="30" width="55" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"/>
+  <img align="center height="30" width="55" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"/>
+  <img align="center height="30" width="55" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original-wordmark.svg"/>
+</div>
 
-- [ ] Faça o fork desse repositório para o seu GitHub
-- [ ] Clone o seu repositório em sua máquina
-- [ ] Desenvolva seu projeto, fazendo commits a cada alteração e push
-- [ ] Crie um PR (pull request)
-- [ ] Envie o link do pull request que você criou na plataforma da Cubos
-
-### ⚠️ Importante: Se o pull request não for criado e enviado na plataforma o feedback não será fornecido e constará como não entregue
-
-## Descrição do desafio
-
-Você acabou de ser contratado pela melhor empresa de tecnologia do mundo: a **CUBOS**.
-Sua primeira tarefa como desenvolvedor é criar uma API para um Banco Digital. Esse será um projeto **piloto**, ou seja, no futuro outras funcionalidades serão implementadas, portanto, dados do banco (nome, agência, etc.) serão imutáveis.
-
-Seu papel é construir uma RESTful API que permita:
-
+## :ladder: Fucionalidades do Projeto
 -   Criar conta bancária
 -   Listar contas bancárias
 -   Atualizar os dados do usuário da conta bancária
@@ -29,73 +19,41 @@ Seu papel é construir uma RESTful API que permita:
 -   Consultar saldo da conta bancária
 -   Emitir extrato bancário
 
-**Importante: Sempre que a validação de uma requisição falhar, responda com código de erro e mensagem adequada à situação, ok?**
+## :ladder: Requisitos
+- npm
+- express
+- fs/promises
+- data-fns
 
-**Exemplo:**
-
-```javascript
-// Quando é informado um número de conta que não existe:
-// HTTP Status 404
-{
-    "mensagem": "Conta bancária não encontada!"
-}
-```
 
 ## Persistências dos dados
 
-Os dados serão persistidos em memória, no objeto existente dentro do arquivo `bancodedados.js`. **Todas as transações e contas bancárias deverão ser inseridas dentro deste objeto, seguindo a estrutura que já existe.**
+Os dados serão persistidos no servidor, em um objeto existente dentro do arquivo `bancodedados.json`. **Todas as transações e contas bancárias deverão ser inseridas dentro deste objeto, seguindo a estrutura que já existe.**
 
-### Estrutura do objeto no arquivo `bancodedados.js`
+### Estrutura do objeto no arquivo `bancodedados.json`
 
 ```javascript
 {
-    banco: {
-        nome: "Cubos Bank",
-        numero: "123",
-        agencia: "0001",
-        senha: "Cubos123Bank",
+    "banco": {
+        "nome": "Cubos Bank",
+        "numero": "123",
+        "agencia": "0001",
+        "senha": "Cubos123Bank",
     },
-    contas: [
+    "contas": [
         // array de contas bancárias
     ],
-    saques: [
+    "saques": [
         // array de saques
     ],
-    depositos: [
+    "depositos": [
         // array de depósitos
     ],
-    transferencias: [
+    "transferencias": [
         // array de transferências
     ],
 }
 ```
-## Requisitos obrigatórios
-
--   Sua API deve seguir o padrão REST
--   Seu código deve estar organizado, delimitando as responsabilidades de cada arquivo adequadamente. Ou seja, é esperado que ele tenha, no mínimo:
-    -   Um arquivo index.js
-    -   Um arquivo de rotas
-    -   Um pasta com controladores
--   Qualquer valor (dinheiro) deverá ser representado em centavos (Ex.: R$ 10,00 reais = 1000)
--   Evite códigos duplicados. Antes de copiar e colar, pense se não faz sentido esse pedaço de código estar centralizado numa função.
-
-## Status Code
-
-Abaixo, listamos os possíveis ***status code*** esperados como resposta da API.
-
-Obs.: A lista abaixo é para consulta, **não** significa que todos os ***status codes*** precisam necessariamente ser utilizados.
-
-```javascript
-// 200 (OK) = requisição bem sucedida
-// 201 (Created) = requisição bem sucedida e algo foi criado
-// 204 (No Content) = requisição bem sucedida, sem conteúdo no corpo da resposta
-// 400 (Bad Request) = o servidor não entendeu a requisição pois está com uma sintaxe/formato inválido
-// 401 (Unauthorized) = o usuário não está autenticado (logado)
-// 403 (Forbidden) = o usuário não tem permissão de acessar o recurso solicitado
-// 404 (Not Found) = o servidor não pode encontrar o recurso solicitado
-// 500 (Internal Server Error) = falhas causadas pelo servidor
-```
-
 ## Endpoints
 
 ### Listar contas bancárias
@@ -119,7 +77,6 @@ Esse endpoint deverá listar todas as contas bancárias existentes.
 #### Exemplo de resposta
 
 ```javascript
-// HTTP Status 200 / 201 / 204
 // 2 contas encontradas
 [
     {
@@ -152,7 +109,6 @@ Esse endpoint deverá listar todas as contas bancárias existentes.
 []
 ```
 ```javascript
-// HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "A senha do banco informada é inválida!"
 }
@@ -203,11 +159,9 @@ Esse endpoint deverá criar uma conta bancária, onde será gerado um número ú
 #### Exemplo de Resposta
 
 ```javascript
-// HTTP Status 200 / 201 / 204
 // Sem conteúdo no corpo (body) da resposta
 ```
 ```javascript
-// HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "Já existe uma conta com o cpf ou e-mail informado!"
 }
@@ -258,11 +212,9 @@ Esse endpoint deverá atualizar apenas os dados do usuário de uma conta bancár
 #### Exemplo de Resposta
 
 ```javascript
-// HTTP Status 200 / 201 / 204
 // Sem conteúdo no corpo (body) da resposta
 ```
 ```javascript
-// HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "O CPF informado já existe cadastrado!"
 }
@@ -292,11 +244,9 @@ Esse endpoint deve excluir uma conta bancária existente.
 #### Exemplo de Resposta
 
 ```javascript
-// HTTP Status 200 / 201 / 204
 // Sem conteúdo no corpo (body) da resposta
 ```
 ```javascript
-// HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "A conta só pode ser removida se o saldo for zero!"
 }
@@ -337,11 +287,9 @@ Esse endpoint deverá somar o valor do depósito ao saldo de uma conta válida e
 #### Exemplo de Resposta
 
 ```javascript
-// HTTP Status 200 / 201 / 204
 // Sem conteúdo no corpo (body) da resposta
 ```
 ```javascript
-// HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "O número da conta e o valor são obrigatórios!"
 }
@@ -393,11 +341,9 @@ Esse endpoint deverá realizar o saque de um valor em uma determinada conta banc
 ```
 #### Exemplo de Resposta
 ```javascript
-// HTTP Status 200 / 201 / 204
 // Sem conteúdo no corpo (body) da resposta
 ```
 ```javascript
-// HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "O valor não pode ser menor que zero!"
 }
@@ -454,11 +400,9 @@ Esse endpoint deverá permitir a transferência de recursos (dinheiro) de uma co
 #### Exemplo de Resposta
 
 ```javascript
-// HTTP Status 200 / 201 / 204
 // Sem conteúdo no corpo (body) da resposta
 ```
 ```javascript
-// HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "Saldo insuficiente!"
 }
@@ -500,13 +444,11 @@ Esse endpoint deverá retornar o saldo de uma conta bancária.
 #### Exemplo de Resposta
 
 ```javascript
-// HTTP Status 200 / 201 / 204
 {
     "saldo": 13000
 }
 ```
 ```javascript
-// HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "Conta bancária não encontada!"
 }
@@ -536,7 +478,6 @@ Esse endpoint deverá listar as transações realizadas de uma conta específica
 #### Exemplo de Resposta
 
 ```javascript
-// HTTP Status 200 / 201 / 204
 {
   "depositos": [
     {
@@ -583,7 +524,6 @@ Esse endpoint deverá listar as transações realizadas de uma conta específica
 ```
 
 ```javascript
-// HTTP Status 400 / 401 / 403 / 404
 {
     "mensagem": "Conta bancária não encontada!"
 }
