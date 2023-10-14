@@ -534,4 +534,4 @@ Esse endpoint deverá listar as transações realizadas de uma conta específica
 
 **LEMBRE-SE**: Feito é melhor do que perfeito, mas não faça mal feito!!!
 
-###### tags: `back-end` `módulo 2` `nodeJS` `API REST` `desafio`
+###### tags: `back-end` `nodeJS` `API REST` 
